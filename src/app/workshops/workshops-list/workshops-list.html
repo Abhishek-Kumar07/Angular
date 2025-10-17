@@ -1,0 +1,25 @@
+<p>workshops-list works!</p>
+
+<!-- @if ( loading ) {
+    <div>Loading data...</div>
+} @if ( !loading && error ) {
+    <div>{{ error.message }}</div>
+} @if ( !loading && workshops) {
+    <div>Number of workshops = {{ workshops.length }}</div>
+} -->
+
+
+<div *ngIf="loading">
+    <app-loading-spinner></app-loading-spinner>
+</div>
+
+<app-error-alert [err]="error" [loading]="loading"></app-error-alert>
+
+<div *ngIf="!loading && workshops">
+    <!-- Explore use of *ngFor directive (old way) -->
+    @for( workshop of workshops; track workshop.id ){
+        <div>{{ workshop.name}}</div>
+    }
+    Number of workshops = {{ workshops.length }}
+</div>
+
